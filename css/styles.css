@@ -1,0 +1,48 @@
+img {
+  border: 1px solid black;
+  height: 250px;
+  width: 30%;
+  float: left;
+  margin-left: 10px;
+}
+body{
+  width: 100%;
+}
+aside {
+  border: 1px solid black;
+  height: 600px;
+  width: 35%;
+  float: left;
+}
+header {
+  height: 15%;
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: center;
+}
+h1 {
+  font-size: 2em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+#primaryContent {
+  float: left;
+}
+#imageContainer {
+  float: left;
+  width: 60%;
+}
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+footer {
+  height: 100px;
+  text-align: center;
+}
+
+footer p {
+  padding-top: 50px;
+}
