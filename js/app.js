@@ -8,35 +8,47 @@ var totalClicks = 0;
 var rounds = 25;
 
 // constructor
-function Product(name, imageUrl) {
+function Product(name, imageUrl, timesSeen) {
   this.name = name;
   this.imageUrl = imageUrl;
   this.timesClicked = 0;
-  this.timesSeen = 0;
+  if (timesSeen) {
+    this.timesSeen = timeSeen;
+  } else {
+    this.timesSeen = 0;
+  }
   allProducts.push(this);
 }
-
-// actually creates products
-new Product('Bag', 'images/bag.jpg');
-new Product('Banana Slicer', 'images/banana.jpg');
-new Product('Tablet Stand', 'images/bathroom.jpg');
-new Product('Toeless Boots', 'images/boots.jpg');
-new Product('Breakfast Maker', 'images/breakfast.jpg');
-new Product('Meatball Bubble Gum', 'images/bubblegum.jpg');
-new Product('Chair', 'images/chair.jpg');
-new Product('Cthulhu', 'images/cthulhu.jpg');
-new Product('Duck Muzzle', 'images/dog-duck.jpg');
-new Product('Dragon Meat', 'images/dragon.jpg');
-new Product('Pen Silverware', 'images/pen.jpg');
-new Product('Pet Sweeper', 'images/pet-sweep.jpg');
-new Product('Pizza Scissors', 'images/scissors.jpg');
-new Product('Shark Sleeping Bag', 'images/shark.jpg');
-new Product('Baby Sweeper', 'images/sweep.png');
-new Product('Tauntain Sleeping Bag', 'images/tauntaun.jpg');
-new Product('Unicorn Meat', 'images/unicorn.jpg');
-new Product('Tentacle Flashdrive', 'images/usb.gif');
-new Product('Watering Can', 'images/water-can.jpg');
-new Product('Wine Glass', 'images/wine-glass.jpg');
+//check for the saved item in localStorage and load it if it exists.  If not run the object constructor function as before
+var savedArrayString = localStorage.getItem('savedArray');
+if(savedArrayString) {
+  var arrayOfNotYetObjects = JSON.parse(savedArrayString);
+  for (var i = 0; i < arrayOfNotYetObjects.length; i++) {
+    new Product (arrayOfNotYetObjects[i].name, arrayOfNotYetObjects[i].imageUrl, arrayOfNotYetObjects[i].timesClicked)
+  }
+} else {
+  // actually creates products
+  new Product('Bag', 'images/bag.jpg');
+  new Product('Banana Slicer', 'images/banana.jpg');
+  new Product('Tablet Stand', 'images/bathroom.jpg');
+  new Product('Toeless Boots', 'images/boots.jpg');
+  new Product('Breakfast Maker', 'images/breakfast.jpg');
+  new Product('Meatball Bubble Gum', 'images/bubblegum.jpg');
+  new Product('Chair', 'images/chair.jpg');
+  new Product('Cthulhu', 'images/cthulhu.jpg');
+  new Product('Duck Muzzle', 'images/dog-duck.jpg');
+  new Product('Dragon Meat', 'images/dragon.jpg');
+  new Product('Pen Silverware', 'images/pen.jpg');
+  new Product('Pet Sweeper', 'images/pet-sweep.jpg');
+  new Product('Pizza Scissors', 'images/scissors.jpg');
+  new Product('Shark Sleeping Bag', 'images/shark.jpg');
+  new Product('Baby Sweeper', 'images/sweep.png');
+  new Product('Tauntain Sleeping Bag', 'images/tauntaun.jpg');
+  new Product('Unicorn Meat', 'images/unicorn.jpg');
+  new Product('Tentacle Flashdrive', 'images/usb.gif');
+  new Product('Watering Can', 'images/water-can.jpg');
+  new Product('Wine Glass', 'images/wine-glass.jpg');
+  }
 
 function getProductArray(nameOfProperty) {
   var answer = [];
@@ -62,6 +74,8 @@ function imageWasClicked(event) {
   allProducts[product2].timesSeen++;
   allProducts[product3].timesSeen++;
 
+  //save the allProducts array as a JSON string
+  localStorage.setItem('savedArray', JSON.stringify(allProducts));
 
   //picks random product to display and check against duplicates
   var nextProduct1 = Math.floor(Math.random() * allProducts.length);
@@ -186,3 +200,19 @@ function runMyChart(){
   for (var i = 0; i < imageElements.length; i++) {
     imageElements[i].addEventListener('click', imageWasClicked);
   }
+
+//we need to have event listeners for the form
+var nameForm = document.getElementById('nameForm');
+
+nameForm.addEventListener('submit',function(event){
+  event.preventDefault;
+  var userNameProvided = document.getElementById('name').value;
+  //save the name to storage
+  localStorage.setItem('userName',userNameProvided);
+  nameForm.textContent = "Welcome to Bus Mall, " + userNameProvided;
+});
+//remove form if name has been entered
+var savedName = localStorage.getItem('userName');
+if(savedName){
+  nameForm.textContent = 'Thanks for coming back, ' + savedName;
+}
