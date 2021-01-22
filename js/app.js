@@ -11,9 +11,9 @@ var rounds = 25;
 function Product(name, imageUrl, timesSeen) {
   this.name = name;
   this.imageUrl = imageUrl;
-  this.timesClicked = 0;
+  this.timesClicked = 0 ;
   if (timesSeen) {
-    this.timesSeen = timeSeen;
+    this.timesSeen = timesSeen;
   } else {
     this.timesSeen = 0;
   }
