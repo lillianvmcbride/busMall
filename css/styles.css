@@ -6,24 +6,25 @@ img {
   margin-left: 10px;
 }
 body{
+  color: #344e5c;
+  background-color: #4ab19d;
   width: 100%;
 }
 aside {
   border: 1px solid black;
-  height: 600px;
-  width: 35%;
+  height: 515px;
+  width: 29%;
   float: left;
+  margin-right: 29px;
 }
 header {
+  font-size: 2em;
+  font-weight: bold;
   height: 15%;
   width: 100%;
-  margin-bottom: 25px;
+  margin-top: 37px;
+  margin-bottom: 30px;
   text-align: center;
-}
-h1 {
-  font-size: 2em;
-  margin-top: 20px;
-  font-weight: bold;
 }
 #primaryContent {
   float: left;
@@ -32,17 +33,21 @@ h1 {
   float: left;
   width: 60%;
 }
+h1 {
+  margin-bottom: 37px;
+}
 h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-top: 10px;
-  padding-bottom: 50px;
-}
-footer {
-  height: 100px;
   text-align: center;
+  font-size: 2em;
+  font-weight: bold;
 }
-
-footer p {
-  padding-top: 50px;
+input, button {
+  font-size: x-large;
+}
+ul {
+  font-weight: bold;
+  color: #8a3324;
+}
+#one {
+margin-top: 96px;
 }

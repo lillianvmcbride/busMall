@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Bus Mall 2.0</title>
-  
     <link rel="stylesheet"  href="/css/reset.css">
     <link rel="stylesheet" href="/css/styles.css">
-
 </head>
-
 <body>
     <header>
-        <h1>Choose one!</h1>
         <form id="nameForm">
-            <label>Enter your name here:</label>
+            <label>ENTER YOUR NAME(S):</label>
             <input id="name" type="text" name="name" />
-            <button type="submit">Submit</button>
+            <button type="submit">SUBMIT</button>
         </form>
     </header>
     <main>
-
         <div id="content">
             <aside>
-                <h2>Results</h2>
+                <h2>RESULTS</h2>
             </aside>
             <div id= "imageContainer">
-                <img class="product" id="1" src="images/dragon.jpg">
-                <img class="product" id="2" src="images/shark.jpg">
-                <img class="product" id="3" src="images/pet-sweep.jpg">
+                <img class="product" id="one" src="images/dragon.jpg">
+                <h1>CHOOSE PRODUCT!</h1>
+                <img class="product" id="two" src="images/shark.jpg">
+                <img class="product" id="three" src="images/pet-sweep.jpg">
             </div>
         </div>
         <canvas id="resultsChart" width="400" height="400"></canvas>
     </main>
     <footer>
-        <h2>Thanks for choosing Bus Mall!</h2>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="js/app.js"></script>
 </body>
-
 </html>

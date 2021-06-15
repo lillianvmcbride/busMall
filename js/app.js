@@ -61,11 +61,11 @@ function getProductArray(nameOfProperty) {
 //stores clicks
 function imageWasClicked(event) {
   totalClicks++;
-  if(event.srcElement.id === '1') {
+  if(event.srcElement.id === 'one') {
     allProducts[product1].timesClicked++;
-  } else if (event.srcElement.id === '2') {
+  } else if (event.srcElement.id === 'two') {
     allProducts[product2].timesClicked++;
-  } else if (event.srcElement.id === '3') {
+  } else if (event.srcElement.id === 'three') {
     allProducts[product3].timesClicked++;
   }
 
@@ -110,7 +110,7 @@ function imageWasClicked(event) {
       resultsElement.firstElementChild.remove();
     }
     var title = document.createElement('h2');
-    title.textContent = 'Results';
+    title.textContent = 'RESULTS';
     resultsElement.appendChild(title);
     var createUL = document.createElement('ul');
     for (var i=0; i < allProducts.length; i++){
@@ -205,14 +205,12 @@ function runMyChart(){
 var nameForm = document.getElementById('nameForm');
 
 nameForm.addEventListener('submit',function(event){
-  event.preventDefault;
   var userNameProvided = document.getElementById('name').value;
   //save the name to storage
   localStorage.setItem('userName',userNameProvided);
-  nameForm.textContent = "Welcome to Bus Mall, " + userNameProvided;
 });
 //remove form if name has been entered
 var savedName = localStorage.getItem('userName');
 if(savedName){
-  nameForm.textContent = 'Thanks for coming back, ' + savedName;
+  nameForm.textContent = "WELCOME TO THE BUS MALL " + savedName.toUpperCase() + '!';
 }
