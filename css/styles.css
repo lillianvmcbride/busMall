@@ -13,7 +13,7 @@ body{
 aside {
   border: 1px solid black;
   height: 515px;
-  width: 29%;
+  width: 30%;
   float: left;
   margin-right: 29px;
 }
@@ -48,6 +48,6 @@ ul {
   font-weight: bold;
   color: #8a3324;
 }
-#one {
-margin-top: 96px;
+#move-it {
+  padding-left: 265px;
 }
