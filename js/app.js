@@ -24,7 +24,7 @@ var savedArrayString = localStorage.getItem('savedArray');
 if(savedArrayString) {
   var arrayOfNotYetObjects = JSON.parse(savedArrayString);
   for (var i = 0; i < arrayOfNotYetObjects.length; i++) {
-    new Product (arrayOfNotYetObjects[i].name, arrayOfNotYetObjects[i].imageUrl, arrayOfNotYetObjects[i].timesClicked)
+    new Product (arrayOfNotYetObjects[i].name, arrayOfNotYetObjects[i].imageUrl, arrayOfNotYetObjects[i].timesClicked);
   }
 } else {
   // actually creates products
@@ -48,12 +48,12 @@ if(savedArrayString) {
   new Product('Tentacle Flashdrive', 'images/usb.gif');
   new Product('Watering Can', 'images/water-can.jpg');
   new Product('Wine Glass', 'images/wine-glass.jpg');
-  }
+}
 
 function getProductArray(nameOfProperty) {
   var answer = [];
   for (var i = 0; i < allProducts.length; i++) {
-      answer[i] = allProducts[i][nameOfProperty];
+    answer[i] = allProducts[i][nameOfProperty];
   }
   return answer;
 }
@@ -105,6 +105,7 @@ function imageWasClicked(event) {
 
   //creates results tab
   if(totalClicks === rounds) {
+
     var resultsElement = document.getElementsByTagName('aside')[0];
     if(resultsElement.firstElementChild){
       resultsElement.firstElementChild.remove();
@@ -115,13 +116,31 @@ function imageWasClicked(event) {
     var createUL = document.createElement('ul');
     for (var i=0; i < allProducts.length; i++){
       var createLI = document.createElement('li');
-      createLI.textContent = allProducts[i].name + ' had ' + allProducts[i].timesClicked + ' votes and was shown ' + allProducts[i].timesSeen + ' times.';
+      if (allProducts[i].timesClicked === 1){
+        createLI.textContent = allProducts[i].name + ' had ' + allProducts[i].timesClicked + ' vote and was shown ';
+        if (allProducts[i].timesSeen === 1){
+          var onceSeenCannotBeUnseen = document.createTextNode(allProducts[i].timesSeen + ' time.');
+        }
+        else if (allProducts[i].timesSeen === 0 || allProducts[i].timesSeen > 1){
+          var onceSeenCannotBeUnseen = document.createTextNode(allProducts[i].timesSeen + ' times.');
+        }
+      }
+      else if (allProducts[i].timesClicked === 0 || allProducts[i].timesClicked > 1){
+        createLI.textContent = allProducts[i].name + ' had ' + allProducts[i].timesClicked + ' votes and was shown ';
+        if (allProducts[i].timesSeen === 1){
+          var onceSeenCannotBeUnseen = document.createTextNode(allProducts[i].timesSeen + ' time.');
+        }
+        else if (allProducts[i].timesSeen === 0 || allProducts[i].timesSeen > 1){
+          var onceSeenCannotBeUnseen = document.createTextNode(allProducts[i].timesSeen + ' times.');
+        }
+      }
+      createLI.appendChild(onceSeenCannotBeUnseen);
       createUL.appendChild(createLI);
-    }
-    resultsElement.appendChild(createUL);
-    if (totalClicks === rounds){
-      for (var j = 0; j < imageElements.length; j++) {
-        imageElements[j].removeEventListener('click', imageWasClicked);
+      resultsElement.appendChild(createUL);
+      if (totalClicks === rounds){
+        for (var j = 0; j < imageElements.length; j++) {
+          imageElements[j].removeEventListener('click', imageWasClicked);
+        }
       }
     }
     runMyChart();
@@ -197,9 +216,9 @@ function runMyChart(){
 }//this close the canvas chart
 
 
-  for (var i = 0; i < imageElements.length; i++) {
-    imageElements[i].addEventListener('click', imageWasClicked);
-  }
+for (var i = 0; i < imageElements.length; i++) {
+  imageElements[i].addEventListener('click', imageWasClicked);
+}
 
 //we need to have event listeners for the form
 var nameForm = document.getElementById('nameForm');
@@ -212,5 +231,5 @@ nameForm.addEventListener('submit',function(event){
 //remove form if name has been entered
 var savedName = localStorage.getItem('userName');
 if(savedName){
-  nameForm.textContent = "WELCOME TO THE BUS MALL " + savedName.toUpperCase() + '!';
+  nameForm.textContent = 'WELCOME TO THE BUS MALL ' + savedName.toUpperCase() + '!';
 }
