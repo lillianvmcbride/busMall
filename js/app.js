@@ -143,6 +143,11 @@ function imageWasClicked(event) {
         }
       }
     }
+    var seeBelow = document.getElementById('lookSeeNow');
+    var lookHere = document.createElement('h2');
+    var lookSee = document.createTextNode('SEE GRAPH BELOW!');
+    lookHere.appendChild(lookSee);
+    seeBelow.appendChild(lookHere);
     runMyChart();
   }
 }
@@ -213,9 +218,7 @@ function runMyChart(){
     }
   });
 
-}//this close the canvas chart
-
-
+}//this closes the canvas chart
 for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
 }
