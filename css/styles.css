@@ -18,7 +18,7 @@ aside {
   margin-right: 29px;
 }
 header {
-  font-size: 2em;
+  font-size: 40px;
   font-weight: bold;
   height: 15%;
   width: 100%;
@@ -34,6 +34,7 @@ header {
   width: 60%;
 }
 h1 {
+  font-size:xx-large;
   margin-bottom: 37px;
 }
 h2 {
@@ -41,8 +42,8 @@ h2 {
   font-size: 2em;
   font-weight: bold;
 }
-input, button {
-  font-size: x-large;
+label, input, button {
+  font-size: 40px;
 }
 ul {
   font-weight: bold;
@@ -50,6 +51,7 @@ ul {
 }
 #move-it {
   padding-left: 265px;
+  color: #8a3324;
 }
 #lookSeeNow {
   line-height: 150px;
